@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "817566550190",
+    "firebase_url": "https://coinmarketmath.firebaseio.com",
+    "project_id": "coinmarketmath",
+    "storage_bucket": "coinmarketmath.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817566550190:android:4ea22c76278a6201",
+        "android_client_info": {
+          "package_name": "com.futuremesalabs.coinmarketmath"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "817566550190-o6ckqv6ge909ekontmmlg39b5mnj2d9c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSSJteqyPnZ2XfuiK5IKZ2Lh2ZQZOP4dA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

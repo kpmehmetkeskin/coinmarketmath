@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -15,7 +16,9 @@
         android:text="txt_symbol"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="18sp"
-        app:fontFamily="sans-serif" />
+        android:textStyle="bold"
+        app:fontFamily="sans-serif"
+        tools:text="MDA" />
 
     <TextView
         android:id="@+id/txt_price"
@@ -24,15 +27,19 @@
         android:layout_alignBaseline="@+id/txt_symbol"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="118dp"
-        android:text="txt_price" />
+        android:text="txt_price"
+        tools:text="0.00000536" />
 
     <TextView
         android:id="@+id/txt_price_power"
         android:layout_width="111dp"
-        android:layout_height="39dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/txt_symbol"
-        android:text="txt_price_power" />
+        android:text="txt_price_power"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        tools:text="100.00" />
 
     <TextView
         android:id="@+id/textView4"

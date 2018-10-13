@@ -1,5 +1,6 @@
 package com.futuremesalabs.coinmarketmath;
 
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.futuremesalabs.coinmarketmath.Connector.Connection;
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }, 0 );
 
+        changeBackgroundColors();
     }
 
     public class CustomAdapter extends BaseAdapter {
@@ -74,4 +77,11 @@ public class MainActivity extends AppCompatActivity {
             return convertView;
         }
     }
+
+    private void changeBackgroundColors() {
+
+        final RelativeLayout rl = (RelativeLayout) findViewById(R.id.top_layout);
+        rl.setBackgroundColor(Color.BLACK);
+    }
+
 }
