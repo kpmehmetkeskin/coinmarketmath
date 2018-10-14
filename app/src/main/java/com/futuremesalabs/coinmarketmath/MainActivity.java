@@ -3,6 +3,7 @@ package com.futuremesalabs.coinmarketmath;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.StrictMode;
+import android.renderscript.Sampler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -69,10 +70,20 @@ public class MainActivity extends AppCompatActivity {
             TextView symbol = (TextView) convertView.findViewById(R.id.txt_symbol);
             TextView price = (TextView) convertView.findViewById(R.id.txt_price);
             TextView pricePower = (TextView) convertView.findViewById(R.id.txt_price_power);
+            TextView priceColor = (TextView) convertView.findViewById(R.id.txt_priceColor);
 
-            symbol.setText(Values.data.get(position).Symbol);
-            price.setText(Values.data.get(position).Price);
+            symbol.setText(Values.data.get(position).getSymbol());
+            price.setText(Values.data.get(position).getPrice());
             pricePower.setText(Values.data.get(position).getPricePower());
+
+            if(Double.parseDouble(Values.data.get(position).getPricePower()) > 90)
+                priceColor.setBackgroundColor(Color.CYAN);
+            else if(Double.parseDouble(Values.data.get(position).getPricePower()) > 70)
+                priceColor.setBackgroundColor(Color.GREEN);
+            else if(Double.parseDouble(Values.data.get(position).getPricePower()) > 50)
+                priceColor.setBackgroundColor(Color.YELLOW);
+            else
+                priceColor.setBackgroundColor(Color.RED);
 
             RelativeLayout row_layout = (RelativeLayout) convertView.findViewById(R.id.row_layout);
             row_layout.setBackgroundColor(Color.rgb(29,39,48));

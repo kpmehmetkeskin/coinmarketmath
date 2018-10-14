@@ -31,31 +31,29 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/txt_symbol"
         android:layout_toEndOf="@+id/txt_symbol"
-        android:layout_toStartOf="@+id/txt_price"
         android:text=" / BTC"
         android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/txt_price"
-        android:layout_width="148dp"
+        android:layout_width="129dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/txt_symbol"
         android:layout_alignParentBottom="false"
         android:layout_alignParentRight="false"
-        android:layout_toStartOf="@+id/txt_price_power"
-        android:freezesText="false"
-        android:paddingRight="20dp"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="30dp"
         android:text="txt_price"
         android:textColor="@android:color/white"
         tools:text="0.00000536" />
 
     <TextView
         android:id="@+id/txt_price_power"
-        android:layout_width="111dp"
+        android:layout_width="78dp"
         android:layout_height="38dp"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/txt_symbol"
