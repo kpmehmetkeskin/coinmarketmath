@@ -3,7 +3,7 @@ package com.futuremesalabs.coinmarketmath.DTO;
 import java.util.List;
 
 public class SymbolPriceResponseDTO {
-    public List<SymbolPriceDTO> data;
+    private List<SymbolPriceDTO> data;
 
     public List<SymbolPriceDTO> getData() {
         return data;

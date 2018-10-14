@@ -19,31 +19,30 @@ import org.json.JSONObject;
 
 public class Connection {
 
-    public static void getSymbolPriceData()  {
+    public List<SymbolPriceDTO> getSymbolPriceData() throws Exception {
+        SymbolPriceResponseDTO data = null;
+        List<SymbolPriceDTO> symbolPriceDTOList = null;
 
-        try {
-            String url = "http://coinmarketmath.com/AndroidEndpointService";
-            URL obj = new URL(url);
-            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-            con.setRequestMethod("GET");
-            con.setRequestProperty("User-Agent", "Mozilla/5.0");
-            int responseCode = con.getResponseCode();
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            String inputLine;
-            StringBuffer response = new StringBuffer();
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-            }
-            in.close();
-
-            Gson gson = new Gson();
-            String json = response.toString();
-            SymbolPriceResponseDTO data = gson.fromJson(json, new TypeToken<SymbolPriceResponseDTO>() {
-            }.getType());
-
-            Values.data = data.getData();
-        } catch (Exception e) {
-
+        String url = "http://coinmarketmath.com/AndroidEndpointService";
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        con.setRequestMethod("GET");
+        con.setRequestProperty("User-Agent", "Mozilla/5.0");
+        int responseCode = con.getResponseCode();
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
         }
+        in.close();
+
+        Gson gson = new Gson();
+        String json = response.toString();
+        data = gson.fromJson(json, new TypeToken<SymbolPriceResponseDTO>() {}.getType());
+        symbolPriceDTOList = data.getData();
+
+
+        return symbolPriceDTOList;
     }
 }
