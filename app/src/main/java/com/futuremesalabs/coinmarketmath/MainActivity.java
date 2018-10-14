@@ -74,14 +74,20 @@ public class MainActivity extends AppCompatActivity {
             price.setText(Values.data.get(position).Price);
             pricePower.setText(Values.data.get(position).getPricePower());
 
+            RelativeLayout row_layout = (RelativeLayout) convertView.findViewById(R.id.row_layout);
+            row_layout.setBackgroundColor(Color.rgb(29,39,48));
+
             return convertView;
         }
     }
 
     private void changeBackgroundColors() {
 
-        final RelativeLayout rl = (RelativeLayout) findViewById(R.id.top_layout);
-        rl.setBackgroundColor(Color.BLACK);
+        final RelativeLayout top_layout = (RelativeLayout) findViewById(R.id.top_layout);
+        top_layout.setBackgroundColor(Color.rgb(24,33,42));
+
+
+
     }
 
 }
