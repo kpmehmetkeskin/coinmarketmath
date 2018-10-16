@@ -35,7 +35,7 @@ public class CustomNotificationManager extends MainActivity {
                 return;
             }
             for (SymbolPriceDTO symbolPriceDTO : symbolPriceDTOList) {
-                if (Double.parseDouble(symbolPriceDTO.getPricePower()) > 59.99 && !Values.sentNotificationsList.contains(symbolPriceDTO.getSymbol())) {
+                if (Double.parseDouble(symbolPriceDTO.getPricePower()) > 99.99 && !Values.sentNotificationsList.contains(symbolPriceDTO.getSymbol())) {
                     sendNotification(symbolPriceDTO.getSymbol());
                     Values.sentNotificationsList.add(symbolPriceDTO.getSymbol());
                 } else if (Double.parseDouble(symbolPriceDTO.getPricePower()) > 13 && Double.parseDouble(symbolPriceDTO.getPricePower()) < 25 && Values.sentNotificationsList.contains(symbolPriceDTO.getSymbol())) {
