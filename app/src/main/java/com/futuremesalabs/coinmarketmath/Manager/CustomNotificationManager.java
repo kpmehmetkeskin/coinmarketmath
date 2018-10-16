@@ -36,7 +36,7 @@ public class CustomNotificationManager extends MainActivity {
                 return;
             }
             for (SymbolPriceDTO symbolPriceDTO : symbolPriceDTOList) {
-                if (Double.parseDouble(symbolPriceDTO.getPricePower()) > 99.99 && !sentNotificationsList.contains(symbolPriceDTO.getSymbol())) {
+                if (Double.parseDouble(symbolPriceDTO.getPricePower()) > 59.99 && !sentNotificationsList.contains(symbolPriceDTO.getSymbol())) {
                     sendNotification(symbolPriceDTO.getSymbol());
                     sentNotificationsList.add(symbolPriceDTO.getSymbol());
                 } else if (Double.parseDouble(symbolPriceDTO.getPricePower()) > 13 && Double.parseDouble(symbolPriceDTO.getPricePower()) < 25 && sentNotificationsList.contains(symbolPriceDTO.getSymbol())) {
@@ -50,9 +50,8 @@ public class CustomNotificationManager extends MainActivity {
 
     private void sendNotification(String coinName) {
         try {
-            // Create an explicit intent for an Activity in your app
-            Intent intent = new Intent(mainContext, MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            Intent intent=new Intent(mainContext, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             PendingIntent pendingIntent = PendingIntent.getActivity(mainContext, 0, intent, 0);
 
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(mainContext, notificationChannelId)
@@ -68,13 +67,14 @@ public class CustomNotificationManager extends MainActivity {
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(mainContext);
 
             // notificationId is a unique int for each notification that you must define
-            notificationManager.notify(notificationId++, mBuilder.build());
+            notificationManager.notify(getNotificationIdByCoinName(coinName), mBuilder.build());
         } catch (Exception e) {
 
         }
     }
 
     private void createNotificationChannel() {
+        try {
             // Create the NotificationChannel, but only on API 26+ because
             // the NotificationChannel class is new and not in the support library
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -88,5 +88,16 @@ public class CustomNotificationManager extends MainActivity {
                 NotificationManager notificationManager = (NotificationManager) mainContext.getSystemService(Context.NOTIFICATION_SERVICE);
                 notificationManager.createNotificationChannel(channel);
             }
+        } catch (Exception e) {
+
+        }
+    }
+
+    private int getNotificationIdByCoinName(String coinName) {
+        int total = 0;
+        for (int i=0; i < coinName.length(); i++) {
+            total += (int)coinName.charAt(i);
+        }
+        return total;
     }
 }

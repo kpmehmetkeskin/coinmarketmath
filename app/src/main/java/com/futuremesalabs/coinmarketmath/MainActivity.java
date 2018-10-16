@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -80,21 +81,15 @@ public class MainActivity extends AppCompatActivity {
                 convertView = getLayoutInflater().inflate(R.layout.row_layout, null);
                 TextView symbol = (TextView) convertView.findViewById(R.id.txt_symbol);
                 TextView price = (TextView) convertView.findViewById(R.id.txt_price);
-                TextView pricePower = (TextView) convertView.findViewById(R.id.txt_price_power);
                 TextView priceColor = (TextView) convertView.findViewById(R.id.txt_priceColor);
+                ProgressBar progressBar = (ProgressBar) convertView.findViewById(R.id.progressBar);
 
                 symbol.setText(data.get(position).getSymbol());
                 price.setText(data.get(position).getPrice());
-                pricePower.setText(data.get(position).getPricePower());
+                priceColor.setBackgroundColor(getProgressBarColor(Double.parseDouble(data.get(position).getPricePower())));
+                progressBar.setProgress((int)Double.parseDouble(data.get(position).getPricePower()));
+                progressBar.getProgressDrawable().setColorFilter(getProgressBarColor(Double.parseDouble(data.get(position).getPricePower())), android.graphics.PorterDuff.Mode.SRC_IN);
 
-                if (Double.parseDouble(data.get(position).getPricePower()) > 90)
-                    priceColor.setBackgroundColor(Color.CYAN);
-                else if (Double.parseDouble(data.get(position).getPricePower()) > 70)
-                    priceColor.setBackgroundColor(Color.GREEN);
-                else if (Double.parseDouble(data.get(position).getPricePower()) > 50)
-                    priceColor.setBackgroundColor(Color.YELLOW);
-                else
-                    priceColor.setBackgroundColor(Color.RED);
 
                 RelativeLayout row_layout = (RelativeLayout) convertView.findViewById(R.id.row_layout);
                 row_layout.setBackgroundColor(Color.rgb(29, 39, 48));
@@ -114,5 +109,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+    private int getProgressBarColor(double val) {
+        double greenValue = val * 2.55;
+        double redValue = 255 - greenValue;
+        return  Color.rgb((int)redValue, (int)greenValue, 0);
+    }
 }
