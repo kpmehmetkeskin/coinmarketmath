@@ -2,6 +2,7 @@ package com.futuremesalabs.coinmarketmath.Manager;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -23,18 +24,17 @@ public class CustomNotificationManager extends MainActivity {
     private List<String> sentNotificationsList;
     private Context mainContext = null;
 
-    public CustomNotificationManager() {
+    public CustomNotificationManager(Context context) {
+        this.mainContext = context;
         createNotificationChannel();
         sentNotificationsList = new ArrayList<String>();
     }
 
-    public void notificationCheck(List<SymbolPriceDTO> symbolPriceDTOList, Context context) {
+    public void notificationCheck(List<SymbolPriceDTO> symbolPriceDTOList) {
         try {
             if (symbolPriceDTOList == null) {
                 return;
             }
-            this.mainContext = context;
-
             for (SymbolPriceDTO symbolPriceDTO : symbolPriceDTOList) {
                 if (Double.parseDouble(symbolPriceDTO.getPricePower()) > 99.99 && !sentNotificationsList.contains(symbolPriceDTO.getSymbol())) {
                     sendNotification(symbolPriceDTO.getSymbol());
@@ -75,7 +75,6 @@ public class CustomNotificationManager extends MainActivity {
     }
 
     private void createNotificationChannel() {
-        try {
             // Create the NotificationChannel, but only on API 26+ because
             // the NotificationChannel class is new and not in the support library
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -86,11 +85,8 @@ public class CustomNotificationManager extends MainActivity {
                 channel.setDescription(description);
                 // Register the channel with the system; you can't change the importance
                 // or other notification behaviors after this
-                android.app.NotificationManager notificationManager = getSystemService(android.app.NotificationManager.class);
+                NotificationManager notificationManager = (NotificationManager) mainContext.getSystemService(Context.NOTIFICATION_SERVICE);
                 notificationManager.createNotificationChannel(channel);
             }
-        } catch (Exception e) {
-            // TODO
-        }
     }
 }

@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         dataManager = new DataManager();
-        customNotificationManager = new CustomNotificationManager();
+        customNotificationManager = new CustomNotificationManager(getApplicationContext());
 
         data = dataManager.getSymbolPriceData();
 
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 data = dataManager.getSymbolPriceData();
                 customAdapter.notifyDataSetChanged();
-                customNotificationManager.notificationCheck(data, getApplicationContext());
+                customNotificationManager.notificationCheck(data);
                 handler.postDelayed( this, 3000 );
             }
         }, 0 );
