@@ -1,6 +1,5 @@
 package com.futuremesalabs.coinmarketmath;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.StrictMode;
@@ -15,14 +14,14 @@ import android.widget.TextView;
 
 import com.futuremesalabs.coinmarketmath.DTO.SymbolPriceDTO;
 import com.futuremesalabs.coinmarketmath.Manager.DataManager;
-import com.futuremesalabs.coinmarketmath.Manager.NotificationManager;
+import com.futuremesalabs.coinmarketmath.Manager.CustomNotificationManager;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     DataManager dataManager = null;
-    NotificationManager notificationManager = null;
+    CustomNotificationManager customNotificationManager = null;
     List<SymbolPriceDTO> data = null;
 
     @Override
@@ -33,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         dataManager = new DataManager();
-        notificationManager = new NotificationManager();
+        customNotificationManager = new CustomNotificationManager();
 
         data = dataManager.getSymbolPriceData();
 
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 data = dataManager.getSymbolPriceData();
                 customAdapter.notifyDataSetChanged();
-                notificationManager.notificationCheck(data, getApplicationContext());
+                customNotificationManager.notificationCheck(data, getApplicationContext());
                 handler.postDelayed( this, 3000 );
             }
         }, 0 );

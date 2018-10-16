@@ -16,14 +16,14 @@ import com.futuremesalabs.coinmarketmath.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotificationManager extends MainActivity {
+public class CustomNotificationManager extends MainActivity {
 
     private int notificationId = 0;
     private final String notificationChannelId = "1234123411";
     private List<String> sentNotificationsList;
     private Context mainContext = null;
 
-    public NotificationManager() {
+    public CustomNotificationManager() {
         createNotificationChannel();
         sentNotificationsList = new ArrayList<String>();
     }
