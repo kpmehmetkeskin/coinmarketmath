@@ -13,6 +13,7 @@ import android.support.v4.app.NotificationManagerCompat;
 import com.futuremesalabs.coinmarketmath.DTO.SymbolPriceDTO;
 import com.futuremesalabs.coinmarketmath.MainActivity;
 import com.futuremesalabs.coinmarketmath.R;
+import com.futuremesalabs.coinmarketmath.Utils.Values;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,13 +22,11 @@ public class CustomNotificationManager extends MainActivity {
 
     private int notificationId = 0;
     private final String notificationChannelId = "1234123411";
-    private List<String> sentNotificationsList;
     private Context mainContext = null;
 
     public CustomNotificationManager(Context context) {
         this.mainContext = context;
         createNotificationChannel();
-        sentNotificationsList = new ArrayList<String>();
     }
 
     public void notificationCheck(List<SymbolPriceDTO> symbolPriceDTOList) {
@@ -36,11 +35,11 @@ public class CustomNotificationManager extends MainActivity {
                 return;
             }
             for (SymbolPriceDTO symbolPriceDTO : symbolPriceDTOList) {
-                if (Double.parseDouble(symbolPriceDTO.getPricePower()) > 59.99 && !sentNotificationsList.contains(symbolPriceDTO.getSymbol())) {
+                if (Double.parseDouble(symbolPriceDTO.getPricePower()) > 59.99 && !Values.sentNotificationsList.contains(symbolPriceDTO.getSymbol())) {
                     sendNotification(symbolPriceDTO.getSymbol());
-                    sentNotificationsList.add(symbolPriceDTO.getSymbol());
-                } else if (Double.parseDouble(symbolPriceDTO.getPricePower()) > 13 && Double.parseDouble(symbolPriceDTO.getPricePower()) < 25 && sentNotificationsList.contains(symbolPriceDTO.getSymbol())) {
-                    sentNotificationsList.remove(symbolPriceDTO.getSymbol());
+                    Values.sentNotificationsList.add(symbolPriceDTO.getSymbol());
+                } else if (Double.parseDouble(symbolPriceDTO.getPricePower()) > 13 && Double.parseDouble(symbolPriceDTO.getPricePower()) < 25 && Values.sentNotificationsList.contains(symbolPriceDTO.getSymbol())) {
+                    Values.sentNotificationsList.remove(symbolPriceDTO.getSymbol());
                 }
             }
         } catch (Exception e) {
