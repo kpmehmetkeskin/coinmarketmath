@@ -13,10 +13,25 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+<<<<<<< Updated upstream
 import com.futuremesalabs.coinmarketmath.Connector.Connection;
 import com.futuremesalabs.coinmarketmath.Utils.Values;
 
 public class MainActivity extends AppCompatActivity {
+=======
+import com.futuremesalabs.coinmarketmath.DTO.SymbolPriceDTO;
+import com.futuremesalabs.coinmarketmath.Manager.DataManager;
+import com.futuremesalabs.coinmarketmath.Manager.NotificationManagerHelper;
+
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
+
+    DataManager dataManager = null;
+    NotificationManagerHelper notificationManagerHelper = null;
+    List<SymbolPriceDTO> data = null;
+
+>>>>>>> Stashed changes
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -24,7 +39,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+<<<<<<< Updated upstream
         Connection.getSymbolPriceData();
+=======
+        dataManager = new DataManager();
+
+        notificationManagerHelper = new NotificationManagerHelper();
+        notificationManagerHelper.getNotificationManager(getApplicationContext());
+        notificationManagerHelper.createNotificationChannel();
+
+        data = dataManager.getSymbolPriceData();
+>>>>>>> Stashed changes
 
         ListView listView = (ListView) findViewById(R.id.listView);
         final CustomAdapter customAdapter = new CustomAdapter();
@@ -37,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 Connection.getSymbolPriceData();
                 customAdapter.notifyDataSetChanged();
+<<<<<<< Updated upstream
+=======
+                notificationManagerHelper.notificationCheck(data, getApplicationContext());
+>>>>>>> Stashed changes
                 handler.postDelayed( this, 3000 );
             }
         }, 0 );
