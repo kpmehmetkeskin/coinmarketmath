@@ -1,0 +1,35 @@
+Bu algoritma, altcoin fiyatlarında ani bir artış olduğunda sizi bilgilendirir.
+
+- Bu algoritma, altcoin fiyatlarında ani bir artış olduğunda sizi anında bilgilendirir.
+- Altcoin aniden yükselmeye başlar başlamaz, CMM size bildirecektir. Madeni paraların ilk yükselme noktasının durumunu hemen görecek ve onları alt noktadan alabileceksiniz.
+- Bu uygulamanın temeli bollinger algoritması ile birleştirilmiş özel algoritmalara dayarır.
+- Bu matematiksel algoritma, bir coin'in üç saniye frekansında fiyat artış serisini hesaplar ve size yüzde olarak bir güç değeri verir.
+- Bu güç değeri ne kadar yüksekse(0-100 arası) fiyatı o kadar hızlı bir şekilde artıyordur.
+- Örneğin;
+	-> Bu güç değeri 0 ise, sabit bir fiyat grafiği vardır.
+	-> Bu güç değeri 30 ise fiyatında küçük artışlar vardır.
+	-> Bu güç değeri 50 ise fiyatı normal şekilde artıyordur.
+	-> Bu güç değeri 70 ise fiyatında ani ve hızlı yükselişler vardır.
+	-> Bu güç değeri 100 ise bir balina bu coin ile oynuyordur ve fiyatında ani ve keskin artışlar vardır.
+
+
+
+
+
+
+
+
+This algorithm informs you when there is a sudden increase in altcoin prices
+
+- This algorithm informs you immediately when there is a sudden increase in altcoin prices
+- As soon as a coin suddenly starts to rise, CMM will notify you. You will immediately see the status of the first rise point of the coins and can get them from the bottom point.
+- The basis of this application is based on custom algorithms combined with the bollinger algorithm.
+- This mathematical algorithm calculates the price increase series at a three-second frequency of a coin and gives you a power value as a percentage.
+- The higher this power value (0-100), the faster the price increases
+- For example;
+	-> If this power value is 0, it has a fixed price graph.
+	-> If this power value is 30, there are small increases in price.
+	-> If this power value is 50, the price is increasing normally.
+	-> If this power value is 70, there are sudden and rapid increases in price.
+	-> If this power value is 100, a whale is playing with this coin and there are sudden and sharp increases in price.
+

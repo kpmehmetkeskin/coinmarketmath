@@ -99,4 +99,5 @@ public class CustomNotificationManager extends MainActivity {
         }
         return total;
     }
+    
 }
