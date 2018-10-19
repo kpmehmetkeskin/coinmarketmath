@@ -1,8 +1,10 @@
 package com.futuremesalabs.coinmarketmath;
 
+import android.app.admin.DeviceAdminInfo;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.StrictMode;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +18,9 @@ import android.widget.TextView;
 import com.futuremesalabs.coinmarketmath.DTO.SymbolPriceDTO;
 import com.futuremesalabs.coinmarketmath.Manager.DataManager;
 import com.futuremesalabs.coinmarketmath.Manager.CustomNotificationManager;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import java.util.List;
 
@@ -24,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     DataManager dataManager = null;
     CustomNotificationManager customNotificationManager = null;
     List<SymbolPriceDTO> data = null;
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +37,15 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //String deviceId = Settings.Secure.getString(this.getContentResolver(),Settings.Secure.ANDROID_ID);
+
+        // Biri uygulama biri ise reklam birimi idsi. ~ ve / den ayırt et.
+        // Test device id yi  id -> md5'le -> uppercase yap
+        MobileAds.initialize(this, "ca-app-pub-1542737248922945~8853553478");
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("5fb43077862fedc6c115bc31a12fc4d5".toUpperCase()).build();
+        mAdView.loadAd(adRequest);
 
         dataManager = new DataManager();
         customNotificationManager = new CustomNotificationManager(getApplicationContext());
