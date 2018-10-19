@@ -44,7 +44,9 @@ public class MainActivity extends AppCompatActivity {
         // Test device id yi  id -> md5'le -> uppercase yap
         MobileAds.initialize(this, "ca-app-pub-1542737248922945~8853553478");
         mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice("5fb43077862fedc6c115bc31a12fc4d5".toUpperCase()).build();
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("5fb43077862fedc6c115bc31a12fc4d5".toUpperCase())
+                .addTestDevice("714afb8a89f8f173c66ce53d8a74bf05".toUpperCase()).build();
         mAdView.loadAd(adRequest);
 
         dataManager = new DataManager();
