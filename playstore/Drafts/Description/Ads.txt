@@ -1,0 +1,15 @@
+This algorithm informs you when there is a sudden increase in altcoin prices
+Play Store: https://play.google.com/store/apps/details?id=com.futuremesalabs.coinmarketmath
+Web: http://coinmarketmath.com
+
+- This algorithm informs you immediately when there is a sudden increase in altcoin prices
+- As soon as a coin suddenly starts to rise, CMM will notify you. You will immediately see the status of the first rise point of the coins and can get them from the bottom point.
+- The basis of this application is based on custom algorithms combined with the bollinger algorithm.
+- This mathematical algorithm calculates the price increase series at a three-second frequency of a coin and gives you a power value as a percentage.
+- The higher this power value (0-100), the faster the price increases
+- For example;
+	-> If this power value is 0, it has a fixed price graph.
+	-> If this power value is 30, there are small increases in price.
+	-> If this power value is 50, the price is increasing normally.
+	-> If this power value is 70, there are sudden and rapid increases in price.
+	-> If this power value is 100, a whale is playing with this coin and there are sudden and sharp increases in price.
